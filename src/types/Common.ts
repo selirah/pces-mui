@@ -10,3 +10,10 @@ export type LayoutT = 'mobile' | 'tablet' | 'laptop' | 'desktop'
 export type LayoutContextT = {
   layout: LayoutT
 }
+
+export type AxiosOption = {
+  url: string
+  method: 'post' | 'get'
+  data?: unknown
+  bearerToken?: string
+}
