@@ -17,6 +17,8 @@ import { loginVal } from '@/validation-schema/auth'
 import { Visibility, VisibilityOff, Login } from '@mui/icons-material'
 import { LoadingButton } from '@mui/lab'
 import useRecaptcha from '@/hooks/useRecaptcha'
+import { SuccessResponse, ErrorResponse } from '@/types/Axios'
+import { onAxiosError } from '@/utils/common'
 
 const LoginPage = () => {
   const intl = useIntl()
@@ -106,7 +108,9 @@ const LoginPage = () => {
                   color="primary"
                   underline="none"
                   role="link"
-                  aria-label="Link to forgotten password page"
+                  aria-label={intl.formatMessage({
+                    defaultMessage: 'Link to forgotten password page'
+                  })}
                 >
                   {intl.formatMessage({ defaultMessage: 'Forgotten password?' })}
                 </Link>
