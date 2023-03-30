@@ -9,6 +9,7 @@ type PropsT = {
 
 export const LayoutContextProvider: React.FC<PropsT> = ({ children }) => {
   const [layout, setLayout] = useState<LayoutT>('laptop')
+  const [openDrawer, setOpenDrawer] = useState(false)
 
   const handleLayout = () => {
     if (window.innerWidth >= 320 && window.innerWidth <= 480) {
@@ -31,5 +32,13 @@ export const LayoutContextProvider: React.FC<PropsT> = ({ children }) => {
     }
   }, [])
 
-  return <LayoutContext.Provider value={{ layout }}>{children}</LayoutContext.Provider>
+  const onSetOpenDrawer = () => {
+    setOpenDrawer(!openDrawer)
+  }
+
+  return (
+    <LayoutContext.Provider value={{ layout, onSetOpenDrawer, openDrawer }}>
+      {children}
+    </LayoutContext.Provider>
+  )
 }

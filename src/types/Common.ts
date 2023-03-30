@@ -9,6 +9,8 @@ export type LayoutT = 'mobile' | 'tablet' | 'laptop' | 'desktop'
 
 export type LayoutContextT = {
   layout: LayoutT
+  openDrawer: boolean
+  onSetOpenDrawer: () => void
 }
 
 export type AxiosOption = {
