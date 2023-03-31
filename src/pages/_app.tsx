@@ -22,7 +22,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <QueryClientProvider client={queryClient}>
                 <Component {...pageProps} />
-                <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+                <ReactQueryDevtools initialIsOpen={false} position="bottom-left" />
               </QueryClientProvider>
             </LocalizationProvider>
           </SessionProvider>

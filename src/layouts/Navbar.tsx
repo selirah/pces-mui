@@ -5,21 +5,22 @@ import {
   IconButton,
   Typography,
   Stack,
-  Button,
   Menu,
   MenuItem,
   Chip,
-  Box,
   Avatar,
   Tooltip,
   Divider,
   ListItemIcon
 } from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu'
-import PersonAdd from '@mui/icons-material/PersonAdd'
 import { LayoutContext } from '@/contexts/Layout'
 import LanguageSwitcher from '@/controllers/LanguageSwitcher'
 import { useIntl } from 'react-intl'
+import MenuIcon from '@mui/icons-material/Menu'
+import SettingsIcon from '@mui/icons-material/Settings'
+import PersonIcon from '@mui/icons-material/Person'
+import AddIcon from '@mui/icons-material/Add'
+import LogoutIcon from '@mui/icons-material/Logout'
 
 type PropsT = {
   pageTitle: string
@@ -113,18 +114,39 @@ const Navbar: React.FC<PropsT> = ({ pageTitle }) => {
           transformOrigin={{ horizontal: 'right', vertical: 'top' }}
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
+          <Stack spacing={1} direction="column" px={2} py={1}>
+            <Typography variant="body1" sx={{ color: 'text.primary' }}>
+              Joey Inc.
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              jdoe@acme.com
+            </Typography>
+          </Stack>
+          <Divider />
           <MenuItem onClick={handleClose}>
-            <Avatar /> Profile
+            <ListItemIcon>
+              <SettingsIcon fontSize="small" />
+            </ListItemIcon>
+            {intl.formatMessage({ defaultMessage: 'Settings' })}
           </MenuItem>
           <MenuItem onClick={handleClose}>
-            <Avatar /> My account
+            <ListItemIcon>
+              <PersonIcon fontSize="small" />
+            </ListItemIcon>
+            {intl.formatMessage({ defaultMessage: 'Profile' })}
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <ListItemIcon>
+              <AddIcon fontSize="small" />
+            </ListItemIcon>
+            {intl.formatMessage({ defaultMessage: 'Add a Business' })}
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleClose}>
             <ListItemIcon>
-              <PersonAdd fontSize="small" />
+              <LogoutIcon fontSize="small" />
             </ListItemIcon>
-            Add another account
+            {intl.formatMessage({ defaultMessage: 'Sign out' })}
           </MenuItem>
         </Menu>
       </Toolbar>
